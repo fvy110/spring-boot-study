@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springalltest.dao.CommodityClassificationMapper">
+  <resultMap id="BaseResultMap" type="com.example.springalltest.bean.CommodityClassification">
+    <id column="Classify_ID" jdbcType="INTEGER" property="classifyId" />
+    <result column="Good_kinds_Name" jdbcType="VARCHAR" property="goodKindsName" />
+    <result column="Upper_ID" jdbcType="INTEGER" property="upperId" />
+    <result column="Upper_Name" jdbcType="VARCHAR" property="upperName" />
+    <result column="Description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from commodity_classification
+    where Classify_ID = #{classifyId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.springalltest.bean.CommodityClassification">
+    insert into commodity_classification (Classify_ID, Good_kinds_Name, Upper_ID, 
+      Upper_Name, Description)
+    values (#{classifyId,jdbcType=INTEGER}, #{goodKindsName,jdbcType=VARCHAR}, #{upperId,jdbcType=INTEGER}, 
+      #{upperName,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.example.springalltest.bean.CommodityClassification">
+    update commodity_classification
+    set Good_kinds_Name = #{goodKindsName,jdbcType=VARCHAR},
+      Upper_ID = #{upperId,jdbcType=INTEGER},
+      Upper_Name = #{upperName,jdbcType=VARCHAR},
+      Description = #{description,jdbcType=VARCHAR}
+    where Classify_ID = #{classifyId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select Classify_ID, Good_kinds_Name, Upper_ID, Upper_Name, Description
+    from commodity_classification
+    where Classify_ID = #{classifyId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select Classify_ID, Good_kinds_Name, Upper_ID, Upper_Name, Description
+    from commodity_classification
+  </select>
+</mapper>
