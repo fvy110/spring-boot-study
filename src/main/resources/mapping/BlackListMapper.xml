@@ -1,34 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.springalltest.dao.BlackListMapper">
-  <resultMap id="BaseResultMap" type="com.example.springalltest.bean.BlackList">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="black_user_id" jdbcType="BIGINT" property="blackUserId" />
-    <result column="user_id" jdbcType="BIGINT" property="userId" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from black_list
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="com.example.springalltest.bean.BlackList">
-    insert into black_list (id, black_user_id, user_id
-      )
-    values (#{id,jdbcType=BIGINT}, #{blackUserId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}
-      )
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.example.springalltest.bean.BlackList">
-    update black_list
-    set black_user_id = #{blackUserId,jdbcType=BIGINT},
-      user_id = #{userId,jdbcType=BIGINT}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select id, black_user_id, user_id
-    from black_list
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select id, black_user_id, user_id
-    from black_list
-  </select>
+<mapper namespace="com.example.springalltest.business.mapper.BlackListMapper">
+    <resultMap id="BaseResultMap" type="com.example.springalltest.business.bean.BlackList">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="black_user_id" jdbcType="BIGINT" property="blackUserId"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from black_list
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.example.springalltest.business.bean.BlackList">
+        insert into black_list (id, black_user_id, user_id
+        )
+        values (#{id,jdbcType=BIGINT}, #{blackUserId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}
+        )
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="com.example.springalltest.business.bean.BlackList">
+        update black_list
+        set black_user_id = #{blackUserId,jdbcType=BIGINT},
+            user_id       = #{userId,jdbcType=BIGINT}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+            id,
+            black_user_id,
+            user_id
+        from black_list
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+            id,
+            black_user_id,
+            user_id
+        from black_list
+    </select>
 </mapper>

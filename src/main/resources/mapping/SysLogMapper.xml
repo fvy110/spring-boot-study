@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springalltest.business.mapper.SysLogMapper">
+    <resultMap id="BaseResultMap" type="com.example.springalltest.business.bean.SysLog">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="operation" jdbcType="VARCHAR" property="operation"/>
+        <result column="time" jdbcType="INTEGER" property="time"/>
+        <result column="method" jdbcType="VARCHAR" property="method"/>
+        <result column="params" jdbcType="VARCHAR" property="params"/>
+        <result column="ip" jdbcType="VARCHAR" property="ip"/>
+        <result column="create_time" jdbcType="DATE" property="createTime"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from sys_log
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.example.springalltest.business.bean.SysLog">
+        insert into sys_log (id, username, content,
+                             operation, time, method,
+                             params, ip, create_time
+        )
+        values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR},
+                #{operation,jdbcType=VARCHAR}, #{time,jdbcType=INTEGER}, #{method,jdbcType=VARCHAR},
+                #{params,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, #{createTime,jdbcType=DATE}
+        )
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="com.example.springalltest.business.bean.SysLog">
+        update sys_log
+        set username    = #{username,jdbcType=VARCHAR},
+            content     = #{content,jdbcType=VARCHAR},
+            operation   = #{operation,jdbcType=VARCHAR},
+            time        = #{time,jdbcType=INTEGER},
+            method      = #{method,jdbcType=VARCHAR},
+            params      = #{params,jdbcType=VARCHAR},
+            ip          = #{ip,jdbcType=VARCHAR},
+            create_time = #{createTime,jdbcType=DATE}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+            id,
+            username,
+            content,
+            operation,
+            time,
+            method,
+            params,
+            ip,
+            create_time
+        from sys_log
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+            id,
+            username,
+            content,
+            operation,
+            time,
+            method,
+            params,
+            ip,
+            create_time
+        from sys_log
+    </select>
+</mapper>

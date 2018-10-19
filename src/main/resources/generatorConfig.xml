@@ -35,7 +35,8 @@
             @TODO:是否可以扩展
          -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://192.168.10.19:3306/ssm" userId="root" password="123456">
+                        connectionURL="jdbc:mysql://192.168.10.19:3306/ssm?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false"
+                        userId="root" password="123456">
             <!-- 这里面可以设置property属性，每一个property属性都设置到配置的Driver上 -->
         </jdbcConnection>
 
@@ -61,7 +62,7 @@
             targetPackage：生成的类要放的包，真实的包受enableSubPackages属性控制；
             targetProject：目标项目，指定一个存在的目录下，生成的内容会放到指定目录中，如果目录不存在，MBG不会自动建目录
          -->
-        <javaModelGenerator targetPackage="com.example.springalltest.bean" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.example.springalltest.business.bean" targetProject="src/main/java">
             <!--  for MyBatis3/MyBatis3Simple
                 自动为每一个生成的类创建一个构造方法，构造方法包含了所有的field；而不是使用setter；
              -->
@@ -107,7 +108,7 @@
                 3，XMLMAPPER：会生成Mapper接口，接口完全依赖XML；
             注意，如果context是MyBatis3Simple：只支持ANNOTATEDMAPPER和XMLMAPPER
         -->
-        <javaClientGenerator targetPackage="com.example.springalltest.dao" type="XMLMAPPER" targetProject="src/main/java">
+        <javaClientGenerator targetPackage="com.example.springalltest.business.mapper" type="XMLMAPPER" targetProject="src/main/java">
             <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
             <property name="enableSubPackages" value="true"/>
 
@@ -152,8 +153,8 @@
             注意，table里面很多参数都是对javaModelGenerator，context等元素的默认属性的一个复写；
          -->
 
-        <table tableName="user" >
-            <!--
+       <!-- <table tableName="sys_log" >
+            &lt;!&ndash;
              参考 javaModelGenerator 的 constructorBased属性
             <property name="constructorBased" value="false"/>
 
@@ -244,13 +245,16 @@
                 column:指定要忽略的列的名字；
                 delimitedColumnName：参考table元素的delimitAllColumns配置，默认为false
                 注意，一个table元素中可以有多个ignoreColumn元素
-            <ignoreColumn column="deptId" delimitedColumnName=""/>-->
+            <ignoreColumn column="deptId" delimitedColumnName=""/>&ndash;&gt;
+        </table>-->
+        <table tableName="t_user">
+            <property name="runtimeTableName" value="user"/>
         </table>
-        <table tableName="black_list"></table>
+        <!--<table tableName="black_list"></table>
         <table tableName="commodity_classification"></table>
         <table tableName="commodity_list"></table>
         <table tableName="gag"></table>
-        <table tableName="score"></table>
+        <table tableName="score"></table>-->
 
 
     </context>

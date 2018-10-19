@@ -1,92 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.springalltest.dao.CommodityListMapper">
-  <resultMap id="BaseResultMap" type="com.example.springalltest.bean.CommodityList">
-    <id column="Good_ID" jdbcType="VARCHAR" property="goodId" />
-    <result column="Classify_ID" jdbcType="INTEGER" property="classifyId" />
-    <result column="Classify_Description" jdbcType="VARCHAR" property="classifyDescription" />
-    <result column="Good_Brand" jdbcType="VARCHAR" property="goodBrand" />
-    <result column="Good_Name" jdbcType="VARCHAR" property="goodName" />
-    <result column="Good_Price" jdbcType="VARCHAR" property="goodPrice" />
-    <result column="Store_Add" jdbcType="VARCHAR" property="storeAdd" />
-    <result column="Monthsale_Num" jdbcType="INTEGER" property="monthsaleNum" />
-    <result column="Color_Classification" jdbcType="VARCHAR" property="colorClassification" />
-    <result column="Comment_Num" jdbcType="INTEGER" property="commentNum" />
-    <result column="Good_AfterRate" jdbcType="VARCHAR" property="goodAfterrate" />
-    <result column="IndustryCompare" jdbcType="VARCHAR" property="industrycompare" />
-    <result column="Good_Link" jdbcType="VARCHAR" property="goodLink" />
-    <result column="Store_Name" jdbcType="VARCHAR" property="storeName" />
-    <result column="Store_Link" jdbcType="VARCHAR" property="storeLink" />
-    <result column="Good_Hot" jdbcType="INTEGER" property="goodHot" />
-    <result column="Store_Age" jdbcType="VARCHAR" property="storeAge" />
-    <result column="Seller_Credit" jdbcType="VARCHAR" property="sellerCredit" />
-    <result column="Ishas_License" jdbcType="INTEGER" property="ishasLicense" />
-    <result column="DescriptionSituation" jdbcType="DOUBLE" property="descriptionsituation" />
-    <result column="ServiceAttitude" jdbcType="DOUBLE" property="serviceattitude" />
-    <result column="LogisticsService" jdbcType="DOUBLE" property="logisticsservice" />
-    <result column="Size" jdbcType="VARCHAR" property="size" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from commodity_list
-    where Good_ID = #{goodId,jdbcType=VARCHAR}
-  </delete>
-  <insert id="insert" parameterType="com.example.springalltest.bean.CommodityList">
-    insert into commodity_list (Good_ID, Classify_ID, Classify_Description, 
-      Good_Brand, Good_Name, Good_Price, 
-      Store_Add, Monthsale_Num, Color_Classification, 
-      Comment_Num, Good_AfterRate, IndustryCompare, 
-      Good_Link, Store_Name, Store_Link, 
-      Good_Hot, Store_Age, Seller_Credit, 
-      Ishas_License, DescriptionSituation, ServiceAttitude, 
-      LogisticsService, Size)
-    values (#{goodId,jdbcType=VARCHAR}, #{classifyId,jdbcType=INTEGER}, #{classifyDescription,jdbcType=VARCHAR}, 
-      #{goodBrand,jdbcType=VARCHAR}, #{goodName,jdbcType=VARCHAR}, #{goodPrice,jdbcType=VARCHAR}, 
-      #{storeAdd,jdbcType=VARCHAR}, #{monthsaleNum,jdbcType=INTEGER}, #{colorClassification,jdbcType=VARCHAR}, 
-      #{commentNum,jdbcType=INTEGER}, #{goodAfterrate,jdbcType=VARCHAR}, #{industrycompare,jdbcType=VARCHAR}, 
-      #{goodLink,jdbcType=VARCHAR}, #{storeName,jdbcType=VARCHAR}, #{storeLink,jdbcType=VARCHAR}, 
-      #{goodHot,jdbcType=INTEGER}, #{storeAge,jdbcType=VARCHAR}, #{sellerCredit,jdbcType=VARCHAR}, 
-      #{ishasLicense,jdbcType=INTEGER}, #{descriptionsituation,jdbcType=DOUBLE}, #{serviceattitude,jdbcType=DOUBLE}, 
-      #{logisticsservice,jdbcType=DOUBLE}, #{size,jdbcType=VARCHAR})
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.example.springalltest.bean.CommodityList">
-    update commodity_list
-    set Classify_ID = #{classifyId,jdbcType=INTEGER},
-      Classify_Description = #{classifyDescription,jdbcType=VARCHAR},
-      Good_Brand = #{goodBrand,jdbcType=VARCHAR},
-      Good_Name = #{goodName,jdbcType=VARCHAR},
-      Good_Price = #{goodPrice,jdbcType=VARCHAR},
-      Store_Add = #{storeAdd,jdbcType=VARCHAR},
-      Monthsale_Num = #{monthsaleNum,jdbcType=INTEGER},
-      Color_Classification = #{colorClassification,jdbcType=VARCHAR},
-      Comment_Num = #{commentNum,jdbcType=INTEGER},
-      Good_AfterRate = #{goodAfterrate,jdbcType=VARCHAR},
-      IndustryCompare = #{industrycompare,jdbcType=VARCHAR},
-      Good_Link = #{goodLink,jdbcType=VARCHAR},
-      Store_Name = #{storeName,jdbcType=VARCHAR},
-      Store_Link = #{storeLink,jdbcType=VARCHAR},
-      Good_Hot = #{goodHot,jdbcType=INTEGER},
-      Store_Age = #{storeAge,jdbcType=VARCHAR},
-      Seller_Credit = #{sellerCredit,jdbcType=VARCHAR},
-      Ishas_License = #{ishasLicense,jdbcType=INTEGER},
-      DescriptionSituation = #{descriptionsituation,jdbcType=DOUBLE},
-      ServiceAttitude = #{serviceattitude,jdbcType=DOUBLE},
-      LogisticsService = #{logisticsservice,jdbcType=DOUBLE},
-      Size = #{size,jdbcType=VARCHAR}
-    where Good_ID = #{goodId,jdbcType=VARCHAR}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select Good_ID, Classify_ID, Classify_Description, Good_Brand, Good_Name, Good_Price, 
-    Store_Add, Monthsale_Num, Color_Classification, Comment_Num, Good_AfterRate, IndustryCompare, 
-    Good_Link, Store_Name, Store_Link, Good_Hot, Store_Age, Seller_Credit, Ishas_License, 
-    DescriptionSituation, ServiceAttitude, LogisticsService, Size
-    from commodity_list
-    where Good_ID = #{goodId,jdbcType=VARCHAR}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select Good_ID, Classify_ID, Classify_Description, Good_Brand, Good_Name, Good_Price, 
-    Store_Add, Monthsale_Num, Color_Classification, Comment_Num, Good_AfterRate, IndustryCompare, 
-    Good_Link, Store_Name, Store_Link, Good_Hot, Store_Age, Seller_Credit, Ishas_License, 
-    DescriptionSituation, ServiceAttitude, LogisticsService, Size
-    from commodity_list
-  </select>
+<mapper namespace="com.example.springalltest.business.mapper.CommodityListMapper">
+    <resultMap id="BaseResultMap" type="com.example.springalltest.business.bean.CommodityList">
+        <id column="Good_ID" jdbcType="VARCHAR" property="goodId"/>
+        <result column="Classify_ID" jdbcType="INTEGER" property="classifyId"/>
+        <result column="Classify_Description" jdbcType="VARCHAR" property="classifyDescription"/>
+        <result column="Good_Brand" jdbcType="VARCHAR" property="goodBrand"/>
+        <result column="Good_Name" jdbcType="VARCHAR" property="goodName"/>
+        <result column="Good_Price" jdbcType="VARCHAR" property="goodPrice"/>
+        <result column="Store_Add" jdbcType="VARCHAR" property="storeAdd"/>
+        <result column="Monthsale_Num" jdbcType="INTEGER" property="monthsaleNum"/>
+        <result column="Color_Classification" jdbcType="VARCHAR" property="colorClassification"/>
+        <result column="Comment_Num" jdbcType="INTEGER" property="commentNum"/>
+        <result column="Good_AfterRate" jdbcType="VARCHAR" property="goodAfterrate"/>
+        <result column="IndustryCompare" jdbcType="VARCHAR" property="industrycompare"/>
+        <result column="Good_Link" jdbcType="VARCHAR" property="goodLink"/>
+        <result column="Store_Name" jdbcType="VARCHAR" property="storeName"/>
+        <result column="Store_Link" jdbcType="VARCHAR" property="storeLink"/>
+        <result column="Good_Hot" jdbcType="INTEGER" property="goodHot"/>
+        <result column="Store_Age" jdbcType="VARCHAR" property="storeAge"/>
+        <result column="Seller_Credit" jdbcType="VARCHAR" property="sellerCredit"/>
+        <result column="Ishas_License" jdbcType="INTEGER" property="ishasLicense"/>
+        <result column="DescriptionSituation" jdbcType="DOUBLE" property="descriptionsituation"/>
+        <result column="ServiceAttitude" jdbcType="DOUBLE" property="serviceattitude"/>
+        <result column="LogisticsService" jdbcType="DOUBLE" property="logisticsservice"/>
+        <result column="Size" jdbcType="VARCHAR" property="size"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete from commodity_list
+        where Good_ID = #{goodId,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.example.springalltest.business.bean.CommodityList">
+        insert into commodity_list (Good_ID, Classify_ID, Classify_Description,
+                                    Good_Brand, Good_Name, Good_Price,
+                                    Store_Add, Monthsale_Num, Color_Classification,
+                                    Comment_Num, Good_AfterRate, IndustryCompare,
+                                    Good_Link, Store_Name, Store_Link,
+                                    Good_Hot, Store_Age, Seller_Credit,
+                                    Ishas_License, DescriptionSituation, ServiceAttitude,
+                                    LogisticsService, Size)
+        values (#{goodId,jdbcType=VARCHAR}, #{classifyId,jdbcType=INTEGER}, #{classifyDescription,jdbcType=VARCHAR},
+                                            #{goodBrand,jdbcType=VARCHAR}, #{goodName,jdbcType=VARCHAR},
+                                            #{goodPrice,jdbcType=VARCHAR},
+                                            #{storeAdd,jdbcType=VARCHAR}, #{monthsaleNum,jdbcType=INTEGER},
+                                            #{colorClassification,jdbcType=VARCHAR},
+                                            #{commentNum,jdbcType=INTEGER}, #{goodAfterrate,jdbcType=VARCHAR},
+            #{industrycompare,jdbcType=VARCHAR},
+            #{goodLink,jdbcType=VARCHAR}, #{storeName,jdbcType=VARCHAR}, #{storeLink,jdbcType=VARCHAR},
+            #{goodHot,jdbcType=INTEGER}, #{storeAge,jdbcType=VARCHAR}, #{sellerCredit,jdbcType=VARCHAR},
+            #{ishasLicense,jdbcType=INTEGER}, #{descriptionsituation,jdbcType=DOUBLE},
+            #{serviceattitude,jdbcType=DOUBLE},
+                #{logisticsservice,jdbcType=DOUBLE}, #{size,jdbcType=VARCHAR})
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="com.example.springalltest.business.bean.CommodityList">
+        update commodity_list
+        set Classify_ID          = #{classifyId,jdbcType=INTEGER},
+            Classify_Description = #{classifyDescription,jdbcType=VARCHAR},
+            Good_Brand           = #{goodBrand,jdbcType=VARCHAR},
+            Good_Name            = #{goodName,jdbcType=VARCHAR},
+            Good_Price           = #{goodPrice,jdbcType=VARCHAR},
+            Store_Add            = #{storeAdd,jdbcType=VARCHAR},
+            Monthsale_Num        = #{monthsaleNum,jdbcType=INTEGER},
+            Color_Classification = #{colorClassification,jdbcType=VARCHAR},
+            Comment_Num          = #{commentNum,jdbcType=INTEGER},
+            Good_AfterRate       = #{goodAfterrate,jdbcType=VARCHAR},
+            IndustryCompare      = #{industrycompare,jdbcType=VARCHAR},
+            Good_Link            = #{goodLink,jdbcType=VARCHAR},
+            Store_Name           = #{storeName,jdbcType=VARCHAR},
+            Store_Link           = #{storeLink,jdbcType=VARCHAR},
+            Good_Hot             = #{goodHot,jdbcType=INTEGER},
+            Store_Age            = #{storeAge,jdbcType=VARCHAR},
+            Seller_Credit        = #{sellerCredit,jdbcType=VARCHAR},
+            Ishas_License        = #{ishasLicense,jdbcType=INTEGER},
+            DescriptionSituation = #{descriptionsituation,jdbcType=DOUBLE},
+            ServiceAttitude      = #{serviceattitude,jdbcType=DOUBLE},
+            LogisticsService     = #{logisticsservice,jdbcType=DOUBLE},
+            Size                 = #{size,jdbcType=VARCHAR}
+        where Good_ID = #{goodId,jdbcType=VARCHAR}
+    </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+            Good_ID,
+            Classify_ID,
+            Classify_Description,
+            Good_Brand,
+            Good_Name,
+            Good_Price,
+            Store_Add,
+            Monthsale_Num,
+            Color_Classification,
+            Comment_Num,
+            Good_AfterRate,
+            IndustryCompare,
+            Good_Link,
+            Store_Name,
+            Store_Link,
+            Good_Hot,
+            Store_Age,
+            Seller_Credit,
+            Ishas_License,
+            DescriptionSituation,
+            ServiceAttitude,
+            LogisticsService,
+            Size
+        from commodity_list
+        where Good_ID = #{goodId,jdbcType=VARCHAR}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+            Good_ID,
+            Classify_ID,
+            Classify_Description,
+            Good_Brand,
+            Good_Name,
+            Good_Price,
+            Store_Add,
+            Monthsale_Num,
+            Color_Classification,
+            Comment_Num,
+            Good_AfterRate,
+            IndustryCompare,
+            Good_Link,
+            Store_Name,
+            Store_Link,
+            Good_Hot,
+            Store_Age,
+            Seller_Credit,
+            Ishas_License,
+            DescriptionSituation,
+            ServiceAttitude,
+            LogisticsService,
+            Size
+        from commodity_list
+    </select>
 </mapper>

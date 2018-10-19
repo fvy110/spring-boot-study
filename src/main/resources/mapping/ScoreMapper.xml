@@ -1,38 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.springalltest.dao.ScoreMapper">
-  <resultMap id="BaseResultMap" type="com.example.springalltest.bean.Score">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="change_type" jdbcType="VARCHAR" property="changeType" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="score" jdbcType="INTEGER" property="score" />
-    <result column="user_id" jdbcType="BIGINT" property="userId" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from score
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="com.example.springalltest.bean.Score">
-    insert into score (id, change_type, create_time, 
-      score, user_id)
-    values (#{id,jdbcType=BIGINT}, #{changeType,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{score,jdbcType=INTEGER}, #{userId,jdbcType=BIGINT})
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.example.springalltest.bean.Score">
-    update score
-    set change_type = #{changeType,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      score = #{score,jdbcType=INTEGER},
-      user_id = #{userId,jdbcType=BIGINT}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select id, change_type, create_time, score, user_id
-    from score
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select id, change_type, create_time, score, user_id
-    from score
-  </select>
+<mapper namespace="com.example.springalltest.business.mapper.ScoreMapper">
+    <resultMap id="BaseResultMap" type="com.example.springalltest.business.bean.Score">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="change_type" jdbcType="VARCHAR" property="changeType"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="score" jdbcType="INTEGER" property="score"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from score
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.example.springalltest.business.bean.Score">
+        insert into score (id, change_type, create_time,
+                           score, user_id)
+        values (#{id,jdbcType=BIGINT}, #{changeType,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
+                #{score,jdbcType=INTEGER}, #{userId,jdbcType=BIGINT})
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="com.example.springalltest.business.bean.Score">
+        update score
+        set change_type = #{changeType,jdbcType=VARCHAR},
+            create_time = #{createTime,jdbcType=TIMESTAMP},
+            score       = #{score,jdbcType=INTEGER},
+            user_id     = #{userId,jdbcType=BIGINT}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+            id,
+            change_type,
+            create_time,
+            score,
+            user_id
+        from score
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+            id,
+            change_type,
+            create_time,
+            score,
+            user_id
+        from score
+    </select>
 </mapper>

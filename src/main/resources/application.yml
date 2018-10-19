@@ -1,5 +1,3 @@
-server:
-context-path: /web
 spring:
     datasource:
         driver-class-name: com.mysql.jdbc.Driver
@@ -57,9 +55,51 @@ spring:
               filter:
                 stat:
                   log-slow-sql: true
+#    devtools:
+#      restart:
+#        enabled: true
+    jackson:
+        #日期格式化
+        date-format: yyyy-MM-dd HH:mm:ss
+        serialization:
+           #格式化输出
+          indent_output: true
+          #忽略无法转换的对象
+          fail_on_empty_beans: false
+        #设置空如何序列化
+        defaultPropertyInclusion: NON_EMPTY
+        deserialization:
+          #允许对象忽略json中不存在的属性
+          fail_on_unknown_properties: false
+        parser:
+          #允许出现特殊字符和转义符
+          allow_unquoted_control_chars: true
+          #允许出现单引号
+          allow_single_quotes: true
+    mail:
+        host: smtp.163.com
+        username: xxxx@163.com
+        password: xxxx
+        properties:
+          mail:
+            smtp:
+              auth: true
+              starttls:
+                enable: true
+                required: true
+    thymeleaf:
+        cache: false
 
+    redis:
+      host: localhost
+      port: 6379
+      jedis:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
 mybatis:
-  type-aliases-package: com.example.springalltest.bean
+  type-aliases-package: com.example.springalltest.business.bean
   mapper-locations: classpath:mapping/*
 
 logging:
